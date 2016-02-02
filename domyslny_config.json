@@ -1,8 +1,25 @@
 {
-  "Pilka": {},
+  "Pilka": {
+    "dy": 180,
+    "dx": 0,
+    "start": 0,
+    "string_imgBall": "grafika/ball.png"
+  },
+  "Paletka":{
+  "predkosc": 200,
+  "string_imgPale": "grafika/paddle.png"
+},
   "PasekWyniku": {
     "czas": 100,
-    "zycie": 5
+    "zycie": 5,
+    "wynik": 0,
+    "licznik": 0,
+    "init": false,
+    "init2": false,
+    "string_zycie": "Zycie: ",
+    "string_wynik": "Wynik: ",
+    "string_czas": "Czas: ",
+    "string_pauza": "PAUZA"
   },
   "OknoGlowne": {
     "command_exit": "EXIT",
@@ -24,7 +41,7 @@
     "width": 500,
     "string_menuPomoc_title": "Pomoc",
     "string_rules": "Zasady gry",
-    "string_help_message": "Zasady gry:\nNależy zbić klocki piłką. Inne zasady dojdą w przyszłości.\n",
+    "string_help_message": "Zasady gry:\nDolaczone w papierowej instrukcji\n",
     "string_menu": "Menu",
     "color_pasekwyniku": -292561,
     "command_bestscore": "BESTSCORE",
@@ -36,11 +53,42 @@
     "gridx_panel_gry":0,
     "gridy_panel_gry":1,
     "weighty_panel_gry":0.95,
-    "string_authors_data":"Autorzy gry:\n-Daniel Rękawek\n-Konrad Jędrzejczak"
+    "string_authors_data":"Autorzy gry:\n-Daniel Rekawek\n-Konrad Jedrzejczak",
+    "pauza": false,
+    "graTrwa": false,
+    "port": 4455
+
+  },
+  "Perk":{
+    "string_bonus_0": "grafika/perk_zwezenie.png",
+    "string_bonus_1": "grafika/perk_poszerzenie.png",
+    "string_bonus_2": "grafika/perk_punkty_20.png",
+    "string_bonus_3": "grafika/perk_punkty_40.png",
+    "string_bonus_4": "grafika/perk_punkty_80.png",
+    "string_bonus_5": "grafika/perk_punkty_160.png",
+    "string_bonus_6": "grafika/perk_punkty_-20.png",
+    "string_bonus_7": "grafika/perk_punkty_-40.png",
+    "string_bonus_8": "grafika/perk_punkty_-80.png",
+    "string_bonus_9": "grafika/perk_punkty_-160.png",
+    "string_bonus_10": "grafika/perk_czas.png",
+    "string_bonus_11": "grafika/perk_zycie.png"
+  },
+  "Klocek":{
+    "string_zycie_5": "grafika/Kafel1.png",
+    "string_zycie_4": "grafika/Kafel2.png",
+    "string_zycie_3": "grafika/Kafel3.png",
+    "string_zycie_2": "grafika/Kafel4.png",
+    "string_zycie_1": "grafika/Kafel5.png"
 
   },
   "SettingFrame":{
     "string_accept": "Akceptuj",
-    "string_ip": "Wprowadź tu swoje IP"
+    "string_ip": "Wprowad  tu swoje IP"
+  },
+  "PanelGry":{
+    "init": false,
+    "pauza": false,
+    "pozostale_klocki": true,
+    "string_tlo": "grafika/tlo.jpg"
   }
 }
