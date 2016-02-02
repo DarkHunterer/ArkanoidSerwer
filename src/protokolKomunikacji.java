@@ -13,11 +13,11 @@ public class protokolKomunikacji {
             System.out.println("Przetworzyłem przywitanie klienta");
             return 9;
         }
-        else if(inputLine.equals("Gimme config nigga!")){
+        else if(inputLine.equals("Gimme config")){
             System.out.println("Przetworzylem prosbe o config");
             return 1;
         }
-        else if(inputLine.equals("Gimme maps nigga!")){
+        else if(inputLine.equals("Gimme maps")){
             System.out.println("Przetworzylem prosbe o mapy");
             return 2;
         }
@@ -25,7 +25,7 @@ public class protokolKomunikacji {
             System.out.println("Przetworzylem prosbe o plik - komenda \"daj\"");
             return 3;
         }
-        else if(inputLine.contains("Gimme highscore nigga!")){
+        else if(inputLine.contains("Gimme highscore")){
             System.out.println("Przetworzylem prosbe o highscore");
             return 4;
         }
