@@ -1,12 +1,29 @@
 /**
- * Created by Daniel on 31.01.2016.
+ * Created by Daniel and Konrad on 31.01.2016.
+ * Klasa odpowiadająca za protokół komunikacji
+ * Przetwarza otrzymaną od klienta komende
+ * Na jej podstawie zwraca odpowiedź, która steruje zachowaniem serwera
  */
 public class protokolKomunikacji {
-    String inLine,outLine;
+    /**
+     * Pole przechowujące komende klienta
+     */
+    String inLine;
+
+    /**
+     * Konstruktor protokołu. Jedynym zadaniem jest zainicjalizowanie pola inLine domyślną wartością.
+     */
     public protokolKomunikacji(){
         inLine="Puste";
-        outLine="Puste";
     }
+
+    /**
+     * Jedyna metoda protokołu komunikacji
+     * Przetwarza komendę wejściową
+     * Zwraca sterowanie obsługi klienta
+     * @param inputLine Komenda do przetworzenia
+     * @return Wartość typu int zwracana jako sterowanie. Ta wartość wykorzystana jest w SocketClientHandler
+     */
     int processInput(String inputLine){
         System.out.println("Przetwarzam: "+inputLine);
         if(inputLine.equals("Witaj serwerze")) {

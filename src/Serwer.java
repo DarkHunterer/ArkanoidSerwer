@@ -10,28 +10,46 @@ import java.net.Socket;
 import java.util.ArrayList;
 
 /**
- * Created by Daniel on 27.01.2016.
+ * Created by Daniel and Konrad on 27.01.2016.
+ * Klasa główna odpowiadająca za serwer
+ * Klasa tworzy obiekt typu SerwerWorker który otwiera serwerSocket
+ * Klasa Serwer odpowiada głównie za GUI serwera
  */
 public class Serwer extends JFrame implements ActionListener {
-
+    /**
+     * Zmienna przechowująca port na ktorym serwer będzie nasłuchiwał
+     */
     private int port;
-
+    /**
+     * Pole przechowujące obiekt buttonu start
+     */
     private JButton btn_start;
+    /**
+     * Pole przechowujace obiekt buttonu exit
+     */
     private JButton btn_exit;
+    /**
+     * Pole przechowujące obiekt do wyswietlania statusu serwera
+     */
     private JTextField textField_status;
+    /**
+     * Pole przechowujące obiekt typu SerwerWorker, który odpowiada za połącznie z klientami
+     */
     SerwerWorker serwer;
+
+    /**
+     * Konstruktor Serwera. Aby stworzyć serwer należy podać numer portu
+     * @param portNumb Parametr który jest numerem portu
+     */
     public Serwer(int portNumb){
         setDefualtProperties();
         port = portNumb;
         initializeUI();
     }
 
-    private void sendWelcomeMessage(Socket client) throws IOException {
-        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(client.getOutputStream()));
-        writer.write("Hello. You are connected to a Simple Socket Server. What is your name?");
-        writer.flush();
-        writer.close();
-    }
+    /**
+     * Metoda odpowiadająca za ustawienia okna GUI serwera, takie jak wielkość, tytuł belki i layout
+     */
     private void setDefualtProperties() {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setPreferredSize(new Dimension(300,500));
@@ -40,6 +58,9 @@ public class Serwer extends JFrame implements ActionListener {
         this.setLayout(new GridLayout(4,4));
     }
 
+    /**
+     * Metoda która inicjalizuje interfejs graficzny
+     */
     private void initializeUI() {
         textField_status = new JTextField("Status: Wylaczony.");
         btn_start = new JButton("Start");
@@ -52,6 +73,11 @@ public class Serwer extends JFrame implements ActionListener {
         setVisible(true);
         pack();
     }
+
+    /**
+     * Metoda main. Tworzy serwer na podstawie numeru portu
+     *
+     */
     public static void main(String[] args){
         int portNumber = 4455;
         // initializing the Socket Server
@@ -59,6 +85,10 @@ public class Serwer extends JFrame implements ActionListener {
 
     }
 
+    /**
+     * Metoda start, uruchamiająca wątek serwera.
+     * Wywoływana jest przez kliknięcie buttonu start
+     */
     void start(){
         boolean listening = true;
         serwer = new SerwerWorker(port);
@@ -66,6 +96,12 @@ public class Serwer extends JFrame implements ActionListener {
         thread.start();
         System.out.println("Koniec metody start");
     }
+
+    /**
+     * Metoda obsługujące zdarzenia w klasie Serwer.
+     * Obsługuje kliknięcie w guzik start i exit
+     * @param e Pole typu ActionEvent
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource()==btn_start){

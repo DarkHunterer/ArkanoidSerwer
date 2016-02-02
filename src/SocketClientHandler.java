@@ -8,15 +8,35 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * Created by Daniel on 30.01.2016.
+ * Created by Daniel and Konrad on 30.01.2016.
+ * Klasa obsługująca połączenie sieciowe.
+ * Przetwarza żądania które otrzyma od klienta
  */
 public class SocketClientHandler implements Runnable {
 
+    /**
+     * Pole klasy socket.
+     * Przechowuje połączenie
+     */
     private Socket clientSocket;
+    /**
+     * Pole służące za strumień wejściowy
+     */
     private BufferedReader in;
-    private BufferedWriter out;
+    /**
+     * Pole odpowiadające za wątek klienta
+     */
     private Thread thread;
+    /**
+     * Pole przechowujące nick gracza
+     */
     private String nick;
+
+    /**
+     * Konstruktor klasy SocketClientHandler
+     * Otwiera strumień wejściowy na podstawie połączenia
+     * @param client Pole socketu obsługiwanego połączenia
+     */
     public SocketClientHandler(Socket client) {
         this.clientSocket = client;
         try {
@@ -33,6 +53,13 @@ public class SocketClientHandler implements Runnable {
         }
     }
 
+    /**
+     * Metoda odpowiadająca za logikę przetworzenia połączenia
+     * Korzysta w tym celu ze strumienia wejściowego
+     * Czyta strumień wejściowy i przekazuje otrzymana komende do protokolu komunikacji
+     * Odbywa sie tu sterowanie reakcja serwera na klienta
+     * Tworzy strumień wyjściowy i przekazuje odpowiedź do klienta
+     */
     @Override
     public void run() {
         try{
@@ -153,6 +180,11 @@ public class SocketClientHandler implements Runnable {
         System.out.println(ex.toString());
     }
     }
+
+    /**
+     * Metoda pomocnicza służąca do wysłania pliku o podanej nazwie
+     * @param name Nazwa pliku do wysłania
+     */
     void send_file(String name){
         try {
             OutputStream out = clientSocket.getOutputStream();
@@ -188,22 +220,3 @@ public class SocketClientHandler implements Runnable {
         }
     }
 }
-
-/*
- Map.Entry<String, Long> tempEntry = new AbstractMap.SimpleEntry<String, Long>("Nick", 0l);
-            for (Map.Entry<String, Long> tempMap : oknoGlowneUchwyt.highScore.entrySet()) {
-                if ((long) wynik > tempMap.getValue()) {
-                    czyRekord = true;
-                    tempEntry = tempMap;
-                    System.out.println("Dziala");
-                    break;
-                }
-            }
-
-
-            oknoGlowneUchwyt.highScore.remove(tempEntry.getKey());
-                oknoGlowneUchwyt.highScore.put(nick, (long) wynik);
-                OknoGlowne.BestScoreFrame bestscore;
-                bestscore = oknoGlowneUchwyt.getScoreFrame();
-                bestscore.zapiszDoPliku();
- */
